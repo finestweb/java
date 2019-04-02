@@ -85,10 +85,16 @@ public class Main {
 
 
         /* -7- */
-        /* Честно смог сдвинуть массив только вправои только на 1 шаг*/
+        /* Честно смог сдвинуть массив только вправои только на много шагов, но только вправо*/
 
         int[] sevenTask = {5,6,8,9,10,56,96,36,25,36};
-        stepItem(sevenTask);
+        int count = 10;
+        for(int i = 1; i <= count; i++){
+            if(i == count){
+                stepItem(sevenTask);
+                System.out.println();
+            }
+        }
     }
 
     public static void checkBalance(int[] sixTask){
