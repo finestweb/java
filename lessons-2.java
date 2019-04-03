@@ -87,13 +87,19 @@ public class Main {
         /* -7- */
         /* Честно смог сдвинуть массив только вправои только на много шагов, но только вправо*/
 
-        int[] sevenTask = {5,6,8,9,10,56,96,36,25,36};
-        int count = 10;
-        for(int i = 1; i <= count; i++){
-            if(i == count){
-                stepItem(sevenTask);
+        int step = 3;
+        if(step > 0){
+            for(int i = 1; i <= step; i++){
+                stepRight(sevenTask);
                 System.out.println();
             }
+        }else{
+            int stepDivide = step * (-1);
+            for(int i = 1; i <= stepDivide; i++){
+                stepLeft(sevenTask);
+                System.out.println();
+            }
+
         }
     }
 
@@ -116,19 +122,31 @@ public class Main {
         }
     }
 
-    public static void stepItem(int[] sevenTask){
-        int step = 1;
-        int last = sevenTask[sevenTask.length - step];
-        for (int i = sevenTask.length - step; i > 0; i--)
+    public static void stepRight(int[] sevenTask){
+        int last = sevenTask[sevenTask.length - 1];
+        for (int i = sevenTask.length - 1; i > 0; i--)
         {
-            sevenTask[i] = sevenTask[i - step];
+            sevenTask[i] = sevenTask[i - 1];
         }
         sevenTask[0] = last;
         for (int i = 0; i < sevenTask.length; i++)
         {
-            System.out.print(sevenTask[i]);
-            System.out.print(' ');
+
         }
+        System.out.println(Arrays.toString(sevenTask));
+        
+    }
+
+    public static void stepLeft(int[] sevenTask){
+        for (int i = 0; i < 1; i++) {
+             int last = sevenTask[0];
+             for (int j = 0; j < sevenTask.length - 1; j++){ 
+                sevenTask[j] = sevenTask[j+1];
+             }
+             sevenTask[sevenTask.length - 1] = last;
+        }
+        System.out.println(Arrays.toString(sevenTask));
+        
     }
 
 }
