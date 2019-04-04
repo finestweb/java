@@ -87,6 +87,8 @@ public class Main {
         /* -7- */
         /* Честно смог сдвинуть массив только вправои только на много шагов, но только вправо*/
 
+        int[] sevenTask = {1, 1, 1, 2, 1, 12, 52, 59};
+
         int step = 3;
         if(step > 0){
             for(int i = 1; i <= step; i++){
@@ -134,19 +136,19 @@ public class Main {
 
         }
         System.out.println(Arrays.toString(sevenTask));
-        
+
     }
 
     public static void stepLeft(int[] sevenTask){
         for (int i = 0; i < 1; i++) {
-             int last = sevenTask[0];
-             for (int j = 0; j < sevenTask.length - 1; j++){ 
+            int last = sevenTask[0];
+            for (int j = 0; j < sevenTask.length - 1; j++){
                 sevenTask[j] = sevenTask[j+1];
-             }
-             sevenTask[sevenTask.length - 1] = last;
+            }
+            sevenTask[sevenTask.length - 1] = last;
         }
         System.out.println(Arrays.toString(sevenTask));
-        
+
     }
 
 }
