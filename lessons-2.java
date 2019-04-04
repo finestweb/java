@@ -52,11 +52,13 @@ public class Main {
 
         for(int i = 0; i < mnogo.length; i++){
             for(int j = 0; j < mnogo.length; j++) {
-                if(i == j){
+                if(i == j || i == 9 - j){
                     System.out.print("1");
                 }else{
                     System.out.print(mnogo[i][j]);
                 }
+
+
 
             }
             System.out.println();
