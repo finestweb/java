@@ -16,7 +16,7 @@ public class Main
         «Повторить игру еще раз? 1 – да / 0 – нет»(1 – повторить, 0 – нет).
          */
 
-        //selectionInNumber()
+        selectionInNumber()
 
 
         /*2. Создать массив из слов String[] words = {"apple", "orange", "lemon",
