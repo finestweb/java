@@ -30,7 +30,7 @@ class Zelenskiy extends President{
         this.debate = debate;
         this.bribery = bribery;
         this.scandal = scandal;
-        this.scandal = procent;
+        this.procent = procent;
     }
 
     @Override
@@ -169,7 +169,7 @@ class Poroshenko extends President{
         this.debate = debate;
         this.bribery = bribery;
         this.scandal = scandal;
-        this.scandal = procent;
+        this.procent = procent;
     }
 
     @Override
@@ -308,7 +308,7 @@ class Timoshenko extends President{
         this.debate = debate;
         this.bribery = bribery;
         this.scandal = scandal;
-        this.scandal = procent;
+        this.procent = procent;
     }
 
     @Override
