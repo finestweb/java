@@ -1,115 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-/* Написать методы, вычисляющий среднее арифметическое чисел от 1 до 50 */
-
-/*class Main{
-    public static void main(String args[]){
-        arithmetic();
-    }
-
-    static void arithmetic(){
-        int summ = 0;
-        double half = 0;
-        int min = 100;
-        int max = 200;
-        int diff = max - min;
-        int[] number = new int[50];
-
-        for(int i = 0; i < number.length; i++){
-            Random random = new Random();
-            number[i] = random.nextInt(diff + 1);
-        }
-
-        for(int i = 0; i < number.length; i++){
-            summ = summ + number[i];
-            System.out.print(" " + number[i]);
-        }
-
-        System.out.println(" " + summ);
-        half = summ / number.length;
-        System.out.println(half);
-    }
-}*/
-
-/*Написать программу вычисляющую минимальный и максимальный элемент массива*/
-
-/*class Main{
-    public static void main(String args[]){
-        arithmetic();
-    }
-
-    static void arithmetic(){
-        int min = 100;
-        int max = 200;
-        int maxNumber = 10;
-        int minNumber = 10;
-        int diff = max - min;
-        int[] number = new int[50];
-
-        for(int i = 0; i < number.length; i++){
-            Random random = new Random();
-            number[i] = random.nextInt(diff + 1);
-        }
-
-        for(int i = 0; i < number.length; i++){
-            System.out.print(" " + number[i]);
-            if(number[i] > maxNumber){
-                maxNumber = number[i];
-            }else if(number[i] <= maxNumber){
-                maxNumber = maxNumber;
-            } 
-
-            if(number[i] >= minNumber){
-                minNumber = minNumber;
-            }else if(number[i] < minNumber){
-                minNumber = number[i];
-            } 
-        }
-
-        System.out.print(" Max element " + maxNumber);
-        System.out.print(" Min element " + minNumber);
-    }
-}*/
-
-/* Написать метод определяющий,  является ли введенное пользователем число типа double или  целым. */
-
-/*class Main{
-    public static void main(String args[]){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Input number: ");
-        String number = scanner.nextLine();
-        if (number.contains(".")) {
-            System.out.println("Input number " + number + " is not all.");
-        }
-        if(Integer.parseInt(number)%2 == 0){
-            System.out.println("Input number " + number + " is all.");
-        } 
-    }
-}*/
-
 /* 
    Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся). 
    Найти и вывести список уникальных слов, из которых состоит массив (дубликаты не считаем). 
    Посчитать сколько раз встречается каждое слово.
 */
 
-/* class Main{
+class Main{
     public static void main(String args[]){
  
         List<String> words = new ArrayList<>();
@@ -180,7 +75,11 @@ import java.util.TreeSet;
         System.out.println("-----------------------------------------\r");
     }
 }
-*/
+
+
+/**************************************************************************************/
+
+
 
 /*
 Написать простой класс ТелефонныйСправочник, который хранит в себе список фамилий и телефонных номеров. 
@@ -194,9 +93,54 @@ import java.util.TreeSet;
 
 class Main{
     public static void main(String args[]){
+    	
+        Person lika = new Person();
+        lika.setName("Lika");
+        lika.setNumber("89259999999");
 
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add(lika);
+
+        System.out.println(phoneBook);
     }
 }
 
+class Person {
 
+    private String number;
+    private String name;
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+}
+
+class PhoneBook extends ArrayList<Person> {
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Person person : this) {
+            stringBuilder.append("----------------------------\n");
+            stringBuilder.append("Name:" + person.getName() + "\n");
+            stringBuilder.append("Number:" + person.getNumber() + "\n");
+        }
+
+        return stringBuilder.toString();
+    }
+
+}
