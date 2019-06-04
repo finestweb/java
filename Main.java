@@ -191,12 +191,58 @@ import java.util.TreeSet;
 (имя, отчество, адрес), делать взаимодействие с пользователем через консоль и т.д.). Консоль желательно не использовать 
 (в том числе Scanner), тестировать просто из метода main() прописывая add() и get().
 */
-
+/*
 class Main{
     public static void main(String args[]){
+    	
+        Person lika = new Person();
+        lika.setName("Lika");
+        lika.setNumber("89259999999");
 
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add(lika);
+
+        System.out.println(phoneBook);
     }
 }
 
+class Person {
 
+    private String number;
+    private String name;
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+}
+
+class PhoneBook extends ArrayList<Person> {
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Person person : this) {
+            stringBuilder.append("----------------------------\n");
+            stringBuilder.append("Name:" + person.getName() + "\n");
+            stringBuilder.append("Number:" + person.getNumber() + "\n");
+        }
+
+        return stringBuilder.toString();
+    }
+
+}
+*/
