@@ -16,6 +16,17 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+//import javafx.application.Application;
+//import javafx.stage.Stage;
+//import javafx.scene.Scene;
+//import javafx.scene.Group;
+//import javafx.scene.text.Text;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 /* Написать методы, вычисляющий среднее арифметическое чисел от 1 до 50 */
 
 /*class Main{
@@ -246,3 +257,65 @@ class PhoneBook extends ArrayList<Person> {
 
 }
 */
+
+/*
+1. Создать окно для клиентской части чата: большое текстовое поле для отображения переписки в центре окна. 
+Однострочное текстовое поле для ввода сообщений и кнопка для отсылки сообщений на нижней панели. 
+Сообщение должно отсылаться либо по нажатию кнопки на форме, либо по нажатию кнопки Enter. 
+При «отсылке» сообщение перекидывается из нижнего поля в центральное.
+*/
+
+/*public class Main{
+    public static void main(String[] args) {
+         new MyWindow();
+    }
+}
+
+class MyWindow extends JFrame {
+    public MyWindow() {
+        JTextArea jTextArea = new JTextArea();
+        jTextArea.setEditable(true);
+        JPanel jPanel = new JPanel(new GridLayout(1, 1));
+        JButton button1 = new JButton("Push me");
+        JButton button2 = new JButton("Clear");
+        JTextField jTextField1 = new JTextField();
+        jPanel.add(jTextField1);
+        jPanel.add(button1);
+        jPanel.add(button2);
+        add(jPanel, BorderLayout.SOUTH);
+        
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jTextArea.append(jTextField1.getText() + "\n");
+            }
+        });
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jTextArea.setText("");
+            }
+        });
+
+        jTextField1.addKeyListener(new KeyAdapter() {
+		    public void keyReleased(KeyEvent e) {
+		        if(e.getKeyCode() == KeyEvent.VK_ENTER ) {
+					jTextArea.append(jTextField1.getText() + "\n");   
+				}
+		    }           
+		});
+
+        add(jTextArea, BorderLayout.NORTH);
+        setBounds(500, 300, 400, 400);
+        setVisible(true);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+}*/
+
+public class Main{
+    public static void main(String[] args) {
+     
+    }
+}
