@@ -9,7 +9,7 @@ public class Main {
     }
 
     static void simple(){
-        final int size2 = 100;
+        final int size2 = 1000000;
         float[] arr2 = new float[size2];
         long start2 = System.currentTimeMillis();
 
@@ -53,7 +53,7 @@ public class Main {
     //Разбиение массива на 2, потои воссоединение
 
     static void hard(){
-        final int size = 1000;
+        final int size = 1000000;
         final int h = size / 2;
         float[] arr = new float[size];
         float[] arr1 = new float[h];
