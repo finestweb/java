@@ -1,109 +1,144 @@
-package com.company;
-import java.util.Arrays;
+import java.util.*;
 
-public class Main {
+public class Json {
+    public static void main(String[] args) {	
 
-    public static void main(String[] args) {
-        //simple();
-        hard();
+    	//1. Написать метод, который меняет два элемента массива местами.(массив может быть любого ссылочного типа);
+    	String list[] = new String[]{"Папа","Мама","дочь","сын","Бабушка","Дедушка"};
+    	for(int i = 0; i < list.length; i++){
+    		System.out.println(list[i]);
+    	}
+    	System.out.println("----------------");
+
+    	for(int i = 0; i < list.length; i++){
+    		if(i%2 == 0){
+    			String a = list[i];
+                list[i] = list[i + 1];
+                list[i + 1] = a;
+    		}
+    		System.out.println(list[i]);
+    	}
+
+    	System.out.println("///////////////////////////////////////////");
+
+	    2. Написать метод, который преобразует массив в ArrayList;
+
+	    ChangeToArrayList chal = new ChangeToArrayList();
+	    System.out.println(chal.changetoarraylist(chal.number));
+
+
+
+    	/*3. Большая задача:
+		a. Есть классы Fruit -> Apple, Orange;(больше фруктов не надо)
+		b. Класс Box в который можно складывать фрукты, коробки условно сортируются по типу фрукта, поэтому в одну коробку нельзя сложить и яблоки, и апельсины;
+		c. Для хранения фруктов внутри коробки можете использовать ArrayList;
+		d. Сделать метод getWeight() который высчитывает вес коробки, зная количество фруктов и вес одного фрукта(вес яблока - 1.0f, апельсина - 1.5f, не важно в каких это единицах);
+		e. Внутри класса коробка сделать метод compare, который позволяет сравнить текущую коробку с той, которую подадут в compare в качестве параметра, true - если их веса равны, false 
+		в противном случае(коробки с яблоками мы можем сравнивать с коробками с апельсинами);
+		f. Написать метод, который позволяет пересыпать фрукты из текущей коробки в другую коробку(помним про сортировку фруктов, нельзя яблоки высыпать в коробку с апельсинами), 
+		соответственно в текущей коробке фруктов не остается, а в другую перекидываются объекты, которые были в этой коробке;
+		g. Не забываем про метод добавления фрукта в коробку.*/
+
+
+
+		Apple apple = new Apple();
+		Orange orange = new Orange();
+		Box<Apple> boxApple = new Box<Apple>();
+        Box<Orange> boxOrange = new Box<Orange>();
+
+        boxApple.addFruit(apple);
+        boxApple.addFruit(apple);
+        boxApple.addFruit(apple);
+        boxApple.addFruit(apple);
+
+        boxOrange.addFruit(orange);
+        boxOrange.addFruit(orange);
+        boxOrange.addFruit(orange);
+        boxOrange.addFruit(orange);
+
+        System.out.println(boxOrange.getWeight(orange));
+        System.out.println(boxApple.getWeight(apple));
+
+        System.out.println(boxOrange.compare(apple,orange));
+        System.out.println(boxApple.compare(apple,orange));
+
+        System.out.println(boxOrange.compare(boxApple));
+        System.out.println(boxApple.compare(boxOrange));
+
+
+
+    }
+} 
+
+class ChangeToArrayList{
+	int[] number = {5,10,23,45,89,100,73,59,61,25,75};
+	ArrayList<Integer> numberlist = new ArrayList<>();
+	ArrayList<Integer> changetoarraylist(int[] number){
+		for(int i = 0; i < number.length; i++){
+			numberlist.add(number[i]);
+		}
+      	return numberlist;
+	}
+}
+
+
+class Apple extends Fruit{
+	public Apple(){
+		this.weight = 1;
+	}
+}
+
+class Orange extends Fruit{
+	public Orange(){
+		this.weight = 2;
+	}	
+}
+
+class Fruit{
+	int weight;
+}
+
+class Box<Object>{
+    private boolean isEmpty = true;
+    private boolean isFull = true;
+    int maxWeight = 25;
+    int addedWeight = 0;
+    ArrayList<Object> boxFruit = new ArrayList<Object>();
+ 	
+
+    void addFruit(Object fruit) {
+        
+        if (addedWeight + 1 <= maxWeight) {
+        	boxFruit.add(fruit);
+    		addedWeight++;
+        	System.out.println("Добавлен фрукт");
+        	isEmpty = false;
+        }else{
+            System.out.println("Коробка полна Sir");
+            isEmpty = false;
+            isFull = true;
+        }
     }
 
-    static void simple(){
-        final int size2 = 1000000;
-        float[] arr2 = new float[size2];
-        long start2 = System.currentTimeMillis();
-
-        //Простое наполнение массива 1
-
-        for(int i = 0; i < size2; i++){
-            arr2[i] = (float)1;
-            //System.out.println(arr2[i]);
-        }
-
-        //Наполнение массива случайными числами
-
-        for(int i = 0; i < size2; i++){
-            arr2[i] = (float)(arr2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-            //System.out.println(arr2[i]);
-        }
-
-
-
-        boolean sorted = false;
-        float temp;
-        while (!sorted) {
-            sorted = true;
-            for (int i = 0; i < arr2.length - 1; i++) {
-                if (arr2[i] > arr2[i + 1]) {
-                    temp = arr2[i];
-                    arr2[i] = arr2[i + 1];
-                    arr2[i + 1] = temp;
-                    sorted = false;
-                }
-            }
-        }
-
-        System.out.println(Arrays.toString(arr2));
-
-        long end2 = System.currentTimeMillis() - start2;
-
-        System.out.println(end2);
+    //Считаем вес коробки
+ 
+    int getWeight(Fruit f) {
+        return boxFruit.size() * f.weight;
     }
-
-    //Разбиение массива на 2, потои воссоединение
-
-    static void hard(){
-        final int size = 1000000;
-        final int h = size / 2;
-        float[] arr = new float[size];
-        float[] arr1 = new float[h];
-        float[] arr2 = new float[h];
-        long start2 = System.currentTimeMillis();
-
-        //Простое наполнение массива 1
-
-        for(int i = 0; i < size; i++){
-            arr[i] = (float)1;
-            System.out.println(arr[i]);
-        }
-
-        System.arraycopy(arr, 0, arr1, 0, h);
-        System.arraycopy(arr, h, arr2, 0, h);
-
-        for(int k = 0; k < h; k++){
-            arr1[k] = (float)(arr1[k] * Math.sin(0.2f + k / 5) * Math.cos(0.2f + k / 5) * Math.cos(0.4f + k / 2));
-            //System.out.println(arr1[k]);
-        }
-
-        for(int j = 0; j < h; j++){
-            arr2[j] = (float)(arr2[j] * Math.sin(0.2f + j / 5) * Math.cos(0.2f + j / 5) * Math.cos(0.4f + j/ 2));
-            //System.out.println(arr2[j]);
-        }
-
-        //Объединение двух массивов
-
-        System.arraycopy(arr1, 0, arr, 0, h);
-        System.arraycopy(arr2, 0, arr, h, h);
-
-        boolean sorted = false;
-        float temp;
-        while (!sorted) {
-            sorted = true;
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    temp = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = temp;
-                    sorted = false;
-                }
-            }
-        }
-
-        System.out.println(Arrays.toString(arr));
-
-        long end2 = System.currentTimeMillis() - start2;
-
-        System.out.println(end2);
-
+ 
+    boolean compare(Fruit f1, Fruit f2) {
+        if (getWeight(f1) == getWeight(f2)) {
+            return true;
+        } else{ 
+        	return false;
+    	}
+    }
+ 
+    boolean compare(Box box) {
+        if (addedWeight == box.addedWeight){
+            return true;
+        }else{
+        	return false;
+    	}
     }
 }
